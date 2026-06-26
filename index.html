@@ -426,7 +426,7 @@ async function load() {
 
     // skip header row, add index
     allData = rows.slice(1)
-      .filter(r => r[1] && r[1].trim())
+      .filter(r => r[1] && r[1].trim() && r[1].trim().length > 2)
       .map((r, i) => { r._idx = i; return r; });
 
     populateFilters(allData);
