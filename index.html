@@ -334,7 +334,7 @@ function renderCard(row, idx) {
   const pop     = row[3] || "";
   const type    = row[4] || "";
   const rating  = parseInt(row[13]);
-  const isWork  = type.includes("עבודה") || type.includes("שכר");
+  const isWork = type.includes("שכר") && !type.includes("ללא שכר");
 
   const badgeClass = isWork ? "badge-work" : "badge-volunteer";
   const badgeText  = isWork ? "עבודה" : "התנדבות";
