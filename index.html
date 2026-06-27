@@ -334,7 +334,7 @@ function renderCard(row, idx) {
   const pop     = row[3] || "";
   const type    = row[4] || "";
   const rating  = parseInt(row[13]);
-  const isWork = type.includes("שכר") && !type.includes("ללא שכר");
+  const isWork = (type.includes("שכר") && !type.includes("ללא שכר")) || type.includes("מלגה");
 
   const badgeClass = isWork ? "badge-work" : "badge-volunteer";
   const badgeText  = isWork ? "עבודה" : "התנדבות";
@@ -419,7 +419,7 @@ function populateFilters(data) {
   });
 
   const typeEl = document.getElementById("filter-type");
-  [["עבודה", "עבודה (עם שכר)"], ["התנדבות", "התנדבות"]].forEach(([val, label]) => {
+  [["שכר", "עבודה (עם שכר)"], ["התנדבות", "התנדבות"], ["מלגה", "מלגה"]].forEach(([val, label]) => {
     const o = document.createElement("option");
     o.value = val; o.textContent = label;
     typeEl.appendChild(o);
