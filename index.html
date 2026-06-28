@@ -334,11 +334,11 @@ function renderCard(row, idx) {
   const pop     = row[3] || "";
   const type    = row[4] || "";
   const rating  = parseInt(row[13]);
-  const isWork = (type.includes("שכר") && !type.includes("ללא שכר")) || type.includes("מלגה");
+  const isWork = type.includes("עם שכר");
 
-  const badgeClass = isWork ? "badge-work" : "badge-volunteer";
-  const badgeText  = isWork ? "עבודה" : "התנדבות";
-
+ const isMelga = type.includes("מלגה");
+const badgeClass = isWork ? "badge-work" : isMelga ? "badge-melga" : "badge-volunteer";
+const badgeText  = isWork ? "עבודה" : isMelga ? "מלגה" : "התנדבות";
   let fieldsHtml = "";
   for (let f = 2; f <= 13; f++) {
     if (f === 1) continue;
